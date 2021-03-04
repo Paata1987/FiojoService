@@ -1,0 +1,23 @@
+<div class="login-wrapper">
+    <form class="login" [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+        <label class="title">
+      <h3 class="welcome">Welcome to</h3>
+      Fiojo Servece
+      <h5 class="hint">Use your Company ID to sign in or create one now </h5>
+      <p>Mahmud</p><p>Mahmud83</p>
+    </label>
+        <div class="login-group">
+            <input class="username" type="text" id="login_username" placeholder="Username " formControlName="userName" />
+            <input class="password" type="password" id="login_password" placeholder="Password" formControlName="password" />
+            <div>
+                <input type="checkbox" />
+                <label for="rememberme"> Remember me </label>
+            </div>
+            <div class="error active" *ngIf="loginInvalid && !formSubmitted">
+                Invalid user name or password
+            </div>
+            <button type="submit" class="btn btn-primary">NEXT</button>
+            <a href="javascript://" class="signup">Sign up for a Company</a>
+        </div>
+    </form>
+</div>

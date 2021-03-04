@@ -1,0 +1,122 @@
+<clr-main-container>
+  <div class="content-container">
+    <main class="content-area center ">
+      <div class="clr-row flex-items-md-center">
+        <div class="clr-col-sm-12  clr-col-md-6 text_Center">
+          <h1>Registation</h1>
+        </div>
+      </div>
+
+
+
+      <div class="clr-row clr-justify-content-center ">
+        <!-- LEFT  PANEL TOP-->
+        <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 ">
+          <!-- search -->
+          <div class="card text_Center">
+            <div class="card-block">
+              <h3 class="card-title">EDIT COMPANY</h3>
+              <form class="clr-form" clrForm [formGroup]="searchCompanyList">
+                <clr-datalist-container>
+                  <label>Search</label>
+                  <input clrDatalistInput placeholder="Option" name="Option" formControlName="item" />
+                  <datalist id="clr-custom-datalistid-1">
+                    <option *ngFor="let preSearchItem of preSearchItems" [value]="preSearchItem"></option>
+                  </datalist>
+                </clr-datalist-container>
+                <button class="btn btn-primary" type="submit" [disabled]="searchCompanyList.invalid" (click)="submit()">
+                  <clr-icon shape="search"></clr-icon>
+                  Search
+                </button>
+              </form>
+              <!-- Search result -->
+              <div class="card-footer">
+                Selected user:
+                <span class="selected_Company_Text label label-light-blue"
+                  *ngIf="selectedCompany">{{selectedCompany.name}}</span>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <!-- RIGHT PANEL TOP -->
+        <div
+          class="clr-col-xl-2 clr-col-lg-3 clr-col-md-4 clr-col-sm-12 clr-col-xm-12 clr-offset-xl-1 clr-offset-lg-1  text_Center">
+          <div class="card text_Center">
+            <div class="card-block">
+              <h3 class="card-title">ADD NEW COMPANY</h3>
+              <p class="card-text">
+                <clr-icon shape="store" class="is-solid" style="width: 48px; height: 48px;"></clr-icon>
+              </p>
+            </div>
+            <div class="card-footer">
+              <a [routerLink]="['/addCompany']" class="btn btn-primary btn-block">Add</a>
+            </div>
+          </div>
+        </div>
+        <!--LEFT PANEL BOTTOM -->
+        <div class="clr-break-row">
+        </div>
+        <!-- company List -->
+        <div class="clr-col-xl-6 clr-col-lg-7 clr-col-md-7  clr-col-sm-12 clr-col-xs-12 ">
+
+          <div class="card text_Center">
+            <div class="card-block">
+
+              <clr-datagrid [(clrDgSingleSelected)]="selectedCompany" [clrDgRowSelection]="true">
+
+                <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+                <clr-dg-column [clrDgField]="'edited'" [clrDgColType]="'string'">Edited</clr-dg-column>
+                <clr-dg-column [clrDgField]="'accountTurnover'" [clrDgColType]="'number'">Account turnover
+                </clr-dg-column>
+                <clr-dg-column [clrDgField]="'overseer'">Overseer</clr-dg-column>
+
+
+                <clr-dg-row *clrDgItems="let company of companyList" [clrDgItem]="company">
+                  <clr-dg-cell class="label">{{company.name}}<span class="badge"
+                      [ngClass]="company.raiting>5 ?'badge-5':'badge-2'">{{company.raiting}}</span></clr-dg-cell>
+                  <clr-dg-cell class="text_Center">{{company.edited}}</clr-dg-cell>
+                  <clr-dg-cell>{{company.accountTurnover}}</clr-dg-cell>
+                  <clr-dg-cell class="overseer_text">{{company.overseer}}</clr-dg-cell>
+
+                </clr-dg-row>
+
+              </clr-datagrid>
+
+            </div>
+          </div>
+
+        </div>
+        <!--RIGHT PANEL BOTTOM -->
+        <div
+          class="clr-col-xl-2 clr-col-lg-3 clr-col-md-4 clr-col-sm-12 clr-col-xm-12 clr-offset-xl-1 clr-offset-lg-1  text_Center">
+          <div class="card">
+            <div class="card-block action_Panel">
+              <div class="progress top">
+                <progress value="50" max="100"></progress>
+              </div>
+              <h4 class="card-title">Action with selected company</h4>
+              <ng-container *ngIf="selectedCompany">
+                <p class="card-text selected_Company_Text label label-light-blue">{{selectedCompany.name}}</p>
+              </ng-container>
+            </div>
+            <ng-container *ngIf="selectedCompany">
+              <div class="card-footer ">
+                <div class="btn-group btn-primary ">
+                  <button class="btn clr-col-4 ">Edit</button>
+                  <button class="btn btn-success ">Add user</button>
+                  <button class="btn btn-danger ">Delete</button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</clr-main-container>

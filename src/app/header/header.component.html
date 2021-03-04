@@ -1,0 +1,77 @@
+<clr-main-container>
+    <clr-header class="header-nav header-4">
+        <div class="branding">
+            <a routerLink="/home" class="nav-link">
+                <clr-icon shape="beta"></clr-icon>
+                <span class="title">Fiojo Service</span>
+            </a>
+        </div>
+        <div class="header-nav" [clr-nav-level]="1">
+            <a routerLink="/registration" [ngClass]="(preStep=='preStep1')?'nav-link active':'nav-link'" (click)="onGoToPage('preStep1')"><span class="nav-text">Regisrtation</span></a>
+            <a routerLink="/addCompany" [ngClass]="(preStep=='preStep2')?'nav-link active':'nav-link'" (click)="onGoToPage('preStep2')"><span class="nav-text">Add Company</span></a>
+        </div>
+        <div class="settings">
+            <ng-container *ngIf="!isLoggedInn" class="nav-text ">
+                <button class="btn btn-inverse logOut_button" (click)="logInUser() ">
+           Log Inn <clr-icon class="is-inverse " size="28" shape="login" ></clr-icon></button>
+            </ng-container>
+            <ng-container *ngIf="isLoggedInn" class="nav-text ">
+                <span class="text_Identity">{{identity_name}} </span>
+                <p class="text_Identity label label-light-blue"> {{identity_role}}</p>
+                <button class="btn btn-inverse logOut_button" (click)="logOutUser()">
+           Log Out <clr-icon class="is-inverse " size="28" shape="logout" ></clr-icon></button>
+            </ng-container>
+        </div>
+
+    </clr-header>
+    <!--Sub Nav-->
+    <nav class="subnav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a [ngClass]="(step=='step1')?'nav-link active':'nav-link'" (click)="onGoToPageSub('step1')" routerLink="/registration-step1">Step 1</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="(step=='step2')?'nav-link active':'nav-link'" (click)="onGoToPageSub('step2')" routerLink="/registration-step2">Step 2</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="(step=='step3')?'nav-link active':'nav-link'" (click)="onGoToPageSub('step3')" routerLink="/registration-step3">Step 3</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="(step=='step4')?'nav-link active':'nav-link'" (click)="onGoToPageSub('step4')" routerLink="/registration-summary">Summary</a>
+            </li>
+        </ul>
+    </nav>
+    <!--Main context-->
+    <div class="content-container ">
+        <main class="content-area ">
+            <router-outlet></router-outlet>
+        </main>
+
+    </div>
+</clr-main-container>
+
+<!-- <mat-toolbar fxLayout="row " color="primary ">
+  <span fxFlex>Fiojo</span>
+  <button mat-button *ngFor="let item of menuItems " [fxShow.lt-md]="item.showOnDesktop " [fxShow.xs]="item.showOnMobile "
+      [fxShow.sm]="item.showOnTablet " [routerLink]="item.route ">
+      <mat-icon class="mr ">{{item.icon}}</mat-icon>
+      {{item.label}}
+  </button>
+  <ng-container>
+      <button mat-icon-button [matMenuTriggerFor]="dropMenu "    fxHide  fxShow.md  fxShow.xs fxShow.sm>
+          <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #dropMenu="matMenu ">
+          <ng-container *ngFor="let item of menuItems ">
+              <div [fxShow]="!item.showOnDesktop " [fxShow.sm]="!item.showOnTablet " [fxShow.xs]="!item.showOnMobile ">
+                  <button mat-menu-item>
+                      <mat-icon class="mr ">{{item.icon}}</mat-icon>
+                      {{item.label}}
+                  </button>
+                  <mat-divider></mat-divider>
+              </div>
+          </ng-container>
+      </mat-menu>
+  </ng-container>
+</mat-toolbar>
+-->

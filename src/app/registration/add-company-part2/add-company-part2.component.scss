@@ -1,0 +1,34 @@
+.bold {
+  font-weight: bold;
+  color: #454545;
+}
+textarea{
+min-width: 70%;
+}
+clr-checkbox-container{
+padding-bottom: 2em;
+}
+.addPhoneIcons{
+text-align: left; padding-top: 2.5em;
+}
+.phonesPaddingLeft{
+padding-left: 1em;
+}
+.phonesListElement{
+color: #fff;
+background: hsl(93, 67%, 38%);
+padding: 2px 4px;
+font-size: 12px;
+}
+
+
+clr-dropdown >button{
+  min-width: 10rem;
+  max-width: 100%;
+
+}
+clr-dropdown-menu >button{
+  min-width: 10rem;
+  max-width: 100%;
+
+}

@@ -1,0 +1,33 @@
+.headerText {
+    background-color: #fff;
+    text-align: center;
+}
+
+.buttonAddPhone {
+    text-align: right;
+}
+
+h2 {
+    color: hsl(198, 100%, 15%);
+}
+
+.option_Item {
+    background-color: #fff;
+    ;
+    font-size: 12px;
+    letter-spacing: normal;
+    //background-color: hsl(198, 100%, 32%);
+    /* width | style | color */
+    border-bottom: thin solid hsl(198, 100%, 32%);
+}
+
+.ng-select .ng-select-container {
+    min-height: 8px;
+    //border: thin solid;
+    font-size: 14px;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 8px;
+    font-size: 12px;
+}

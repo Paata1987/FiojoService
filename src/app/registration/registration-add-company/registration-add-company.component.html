@@ -1,0 +1,148 @@
+<div class="clr-row clr-justify-content-center container">
+    <div class="clr-col-12 headerText">
+        <h2> Add new company</h2>
+        <div **ngIf="registered">
+            <clr-alert [@visibilityChanged]="visiblityState" clrAlertType="info">Mодель пользователя, Удачно зарегистрирована.</clr-alert>
+        </div>
+    </div>
+</div>
+
+<div class="clr-row clr-justify-content-center ">
+    <!-- LEFT  PANEL TOP-->
+    <div class="clr-col-xl-4 clr-col-lg-4 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 ">
+        <form clrForm class="form" [formGroup]="registrationUserForm" (ngSubmit)="onFormSubmit()" [hidden]="submitted">
+            <!-- 1 PART -->
+            <div class="card">
+                <div class="card-block">
+                    <div class="top">
+                        <clr-progress-bar [clrValue]="progressValue" [clrSuccess]="progressCompanySuccess"></clr-progress-bar>
+                    </div>
+
+                    <h4 class="card-title">Title</h4>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, aut. Nihil nemo, necessitatibus earum.
+                    </p>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <!-- USER NAME -->
+                        <clr-input-container>
+                            <label for="empFullName">Full name</label>
+                            <input clrInput id="empFullName" type="username" formControlName="userName">
+                            <clr-control-helper>Username should not contain space and special characters</clr-control-helper>
+                            <clr-control-error [class.invalid]="registrationUserForm.get('userName')!.invalid
+               && (registrationUserForm.get('userName')!.dirty || registrationUserForm.get('userName')!.touched)">
+                                User name is invalid can only contain letters or digits. Or is busy</clr-control-error>
+                        </clr-input-container>
+                        <!-- PASSWORD -->
+                        <clr-password-container>
+                            <label for="empPassword">Password</label>
+                            <input placeholder="Password" clrPassword formControlName="password">
+                            <clr-control-helper> Must contain at least 8 characters with at least one of them a special character like!@#$%^&*)</clr-control-helper>
+                            <clr-control-error [class.invalid]="registrationUserForm.get('password')!.invalid
+               && (registrationUserForm.get('password')!.dirty || registrationUserForm.get('password')!.touched)">
+                                User name is invalid can only contain letters or digits. Or is busy</clr-control-error>
+                        </clr-password-container>
+                        <!-- Culture DropDown  -->
+                        <clr-control-container>
+                            <label>User culture</label>
+                            <ng-select clrControl [multiple]="false" appearance="outline" [searchable]="false" [clearable]="false" formControlName="userCulture" [virtualScroll]="true">
+                                <ng-option *ngFor="let cultureItem of cultureList" [value]="cultureItem.Name">
+                                    <div class="option_Item"><span>{{cultureItem.Name}}</span></div>
+                                </ng-option>
+                            </ng-select>
+                            <clr-control-helper>Select users land</clr-control-helper>
+                            <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+                        </clr-control-container>
+                        <!-- Roles DropDown  -->
+                        <clr-control-container>
+                            <label>Roles</label>
+                            <ng-select clrControl [multiple]="false" appearance="outline" [searchable]="false" [clearable]="false" formControlName="userRoles" [virtualScroll]="true">
+                                <ng-option *ngFor="let roleItem of rolesList" [value]="roleItem.id">
+                                    <div class="option_Item"><span>{{roleItem.roleName}}</span></div>
+                                </ng-option>
+                            </ng-select>
+                            <clr-control-helper>Select users roles</clr-control-helper>
+                            <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+                        </clr-control-container>
+                        <!-- Language DropDown  -->
+                        <clr-control-container>
+                            <label>Language</label>
+                            <ng-select clrControl [multiple]="false" appearance="outline" [searchable]="false" [clearable]="false" formControlName="language" [virtualScroll]="true">
+                                <ng-option *ngFor="let langItem of languageList" [value]="langItem.Name">
+                                    <div class="option_Item"><span>{{langItem.Name}}</span></div>
+                                </ng-option>
+                            </ng-select>
+                            <clr-control-helper>Select language</clr-control-helper>
+                            <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+                        </clr-control-container>
+                    </li>
+                    <li class="list-group-item">
+                        <!-- FIRST NAME -->
+                        <clr-input-container>
+                            <label for="empFirstName">First name</label>
+                            <input clrInput id="empFirstName" type="text" formControlName="firstName">
+                            <clr-control-helper>First name should not contain space and special characters</clr-control-helper>
+                            <clr-control-error [class.invalid]="registrationUserForm.get('firstName')!.invalid
+               && (registrationUserForm.get('firstName')!.dirty || registrationUserForm.get('firstName')!.touched)">
+                                First name is invalid can only contain letters or digits.</clr-control-error>
+                        </clr-input-container>
+                        <!-- LAST NAME -->
+                        <clr-input-container>
+                            <label for="empLastName">Last name</label>
+                            <input clrInput id="empLastName" type="text" formControlName="lastName">
+                            <clr-control-helper>Last name should not contain space and special characters</clr-control-helper>
+                            <clr-control-error [class.invalid]="registrationUserForm.get('lastName')!.invalid
+               && (registrationUserForm.get('lastName')!.dirty || registrationUserForm.get('lastName')!.touched)">
+                                Last name is invalid can only contain letters or digits.</clr-control-error>
+                        </clr-input-container>
+                        <!-- GROUP NAME -->
+                        <clr-input-container>
+                            <label for="empGroupName">Full name</label>
+                            <input clrInput id="empGroupName" type="text" formControlName="groupName">
+                            <clr-control-helper>GROUP name should not contain space and special characters</clr-control-helper>
+                            <clr-control-error [class.invalid]="registrationUserForm.get('groupName')!.invalid
+               && (registrationUserForm.get('groupName')!.dirty || registrationUserForm.get('groupName')!.touched)">
+                                First name is invalid can only contain letters or digits.</clr-control-error>
+                        </clr-input-container>
+                        <!-- Phones -->
+
+                        <clr-input-container>
+                            <label for="empPhones">Phone</label>
+                            <input clrInput id="empPhones" type="text" formControlName="phone">
+
+                        </clr-input-container>
+
+                        <div class="buttonAddPhone">
+                            <button type="button" class="btn btn-icon btn-primary" (click)="addPhone()">Add number</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item ">Lorem ipsum.</li>
+                </ul>
+                <div class="card-footer ">
+                    <button class="btn btn-primary " type="submit " [disabled]="registrationUserForm.invalid && submitted ">Add</button>
+                    <button class="btn btn-primary " type="submit " [disabled]="!registrationUserForm.invalid ">Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="clr-col-xl-4 clr-col-lg-4 clr-col-md-4 clr-col-sm-12 clr-col-xs-12 ">
+        <!-- 2 PART -->
+    </div>
+    <div class="clr-col-xl-4 clr-col-lg-4 clr-col-md-4 clr-col-sm-12 clr-col-xs-12 ">
+        <!-- 3 PART -->
+    </div>
+
+</div>
+
+<clr-modal [(clrModalOpen)]="saveModalOpened " [clrModalClosable]="false " [clrModalSize]=" 'md' ">
+    <h3 class="modal-title ">Do you want to add new Company account?</h3>
+    <div class="modal-body ">
+        <clr-alert clrAlertType="warning">Сейчас будет заригестрирована модель пользователя, которая даёт возможност входа в систему под своим логином и паролем.</clr-alert>
+    </div>
+    <div class="modal-footer ">
+        <button type="button " class="btn btn-primary " (click)="SetRegisterUserAuth() ">
+         NEXT
+      </button>
+    </div>
+</clr-modal>

@@ -1,0 +1,242 @@
+<!-- 2 PART -->
+
+<div class="clr-row clr-justify-content-center">
+  <div class=" clr-col-xl-5 clr-col-lg-10 clr-col-md-12  clr-col-sm-12 clr-col-xs-12 center ">
+    <h3>Location</h3>
+    <clr-alert clrAlertType="warning">Исправте информацию только в случае надобности</clr-alert>
+  </div>
+</div>
+
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-auto ">
+
+
+    <!-- COMPANY NAME -->
+    <clr-input-container>
+      <label>Full Official Name of company</label>
+      <input clrInput placeholder="Enter text here!" name="name" [(ngModel)]="regStepCompanyDetails.Name" required />
+      <clr-control-helper>Name should not contain space and special characters</clr-control-helper>
+      <clr-control-error [class.invalid]="">
+        Name is invalid can only contain letters or digits. Or is busy</clr-control-error>
+    </clr-input-container>
+
+
+    <!-- Org NUMBER -->
+    <clr-input-container>
+      <label>Org number</label>
+      <input clrInput placeholder="+47" name="groupName" type="phone" [(ngModel)]="regStepCompanyDetails.OrgNumber" />
+      <clr-control-helper>Org number</clr-control-helper>
+    </clr-input-container>
+
+    <!-- EMAIL -->
+    <div class="clr-row">
+      <div class="col-md-6 phonesPaddingLeft">
+        <clr-input-container>
+          <label for="empFirstName">Email</label>
+          <input clrInput placeholder="Enter text here!" name="name" type="email" [(ngModel)]="newEmail" />
+          <clr-control-helper>Email is not valid</clr-control-helper>
+        </clr-input-container>
+      </div>
+      <div class="col-md-6 addPhoneIcons">
+        <clr-icon (click)="addToElement(newEmail,regStepCompanyDetails.Emails)" shape="plus"></clr-icon>
+      </div>
+    </div>
+    <!--show emails-->
+    <div class="clr-row " *ngIf="regStepCompanyDetails.Emails.length>0">
+      <div class="col-md-1 phonesPaddingLeft" *ngFor="let itemEmail of regStepCompanyDetails.Emails">
+        <div class="phonesListElement"> {{itemEmail}} <span
+            (click)="deleteFromArray(itemEmail,regStepCompanyDetails.Emails)" class="badge badge-danger">x</span></div>
+      </div>
+    </div>
+    <!-- Phones -->
+    <div class="clr-row">
+      <div class="col-md-6 phonesPaddingLeft">
+        <clr-input-container>
+          <label class="inputLable" for="phones">Phones</label>
+          <input clrInput placeholder="+47" name="phones" type="phone" [(ngModel)]="newPhone" />
+          <clr-control-helper>Phones is not valid</clr-control-helper>
+        </clr-input-container>
+      </div>
+      <div class="col-md-6 addPhoneIcons">
+        <clr-icon (click)="addToElement(newPhone,regStepCompanyDetails.Phones)" shape="plus-circle" solid></clr-icon>
+
+      </div>
+    </div>
+    <!--show phones-->
+    <div class="clr-row " *ngIf="regStepCompanyDetails.Phones.length>0">
+      <div class="col-md-1 phonesPaddingLeft" *ngFor="let itemPhone of regStepCompanyDetails.Phones">
+        <div class="phonesListElement"> {{itemPhone}} <span
+            (click)="deleteFromArray(itemPhone,regStepCompanyDetails.Phones)" class="badge badge-danger">x</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Site -->
+    <clr-input-container>
+      <label for="empFirstName">Web site</label>
+      <input clrInput placeholder="http://..." name="OrgNumber" type="url"
+        [(ngModel)]="regStepCompanyDetails.WebSite" />
+      <clr-control-helper>Email is not valid</clr-control-helper>
+    </clr-input-container>
+    <!-- Description -->
+
+
+    <div class="clr-textarea-wrapper">
+      <textarea id="textareaDescription" placeholder="Enter text about company" class="clr-textarea"
+        [(ngModel)]="regStepCompanyDetails.Description"></textarea>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Location  -->
+
+
+<div class="clr-row clr-justify-content-center">
+  <div class=" clr-col-xl-5 clr-col-lg-10 clr-col-md-12  clr-col-sm-12 clr-col-xs-12 center ">
+    <h3>Location</h3>
+    <clr-alert clrAlertType="warning">Проверте, нужны ли исправления!</clr-alert>
+  </div>
+</div>
+
+
+<div class="clr-row clr-justify-content-center">
+  <div class=" clr-col-xl-5 clr-col-lg-10 clr-col-md-12  clr-col-sm-12 clr-col-xs-12 center ">
+    <div class="clr-row">
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <!-- Type  DropDown  -->
+        <clr-control-container>
+          <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger> Country
+              <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+              <ng-container *ngFor="let item of cTypes">
+                <button clrDropdownTrigger (click)="TypeCo(item)">{{item}}</button>
+              </ng-container>
+
+            </clr-dropdown-menu>
+          </clr-dropdown>
+        </clr-control-container>
+
+      </div>
+
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <!-- Type  DropDown  -->
+        <clr-control-container>
+          <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger> Region
+              <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+              <ng-container *ngFor="let item of cTypes">
+                <button clrDropdownTrigger (click)="TypeCo(item)">{{item}}</button>
+              </ng-container>
+
+            </clr-dropdown-menu>
+          </clr-dropdown>
+        </clr-control-container>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-xl-5 clr-col-lg-10 clr-col-md-12  clr-col-sm-12 clr-col-xs-12 center ">
+    <div class="clr-row">
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <!-- Type  DropDown  -->
+        <clr-control-container>
+          <clr-dropdown>
+            <button class="btn btn-outline-primary" clrDropdownTrigger> City
+              <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+              <ng-container *ngFor="let item of cTypes">
+                <button clrDropdownTrigger (click)="TypeCo(item)">{{item}}</button>
+              </ng-container>
+
+            </clr-dropdown-menu>
+          </clr-dropdown>
+        </clr-control-container>
+      </div>
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-xl-5 clr-col-lg-10 clr-col-md-12  clr-col-sm-12 clr-col-xs-12 center ">
+    <div class="clr-row">
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <!-- Type  input short  -->
+        <clr-input-container>
+          <label class="inputLable">Index</label>
+          <input clrInput placeholder="Enter text here!" name="name" [(ngModel)]="newCompanyDetailsLocation.Index"
+            required />
+          <clr-control-helper>Name should not contain space and special characters</clr-control-helper>
+          <clr-control-error [class.invalid]="">
+            Name is invalid can only contain letters or digits. Or is busy</clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <clr-input-container>
+          <label class="inputLable">Appartment number</label>
+          <input clrInput placeholder="Enter text here!" name="name"
+            [(ngModel)]="newCompanyDetailsLocation.ApartmentsNumber" required />
+          <clr-control-helper>Name should not contain space and special characters</clr-control-helper>
+          <clr-control-error [class.invalid]="">
+            Name is invalid can only contain letters or digits. Or is busy</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-xl-5 clr-col-lg-10 clr-col-md-12  clr-col-sm-12 clr-col-xs-12 center ">
+    <div class="clr-row">
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <!-- Street name  -->
+        <clr-input-container>
+          <label class="inputLable">Street number</label>
+          <input clrInput type="number" placeholder="465" name="name"
+            [(ngModel)]="newCompanyDetailsLocation.StreetNumber" required />
+          <clr-control-helper>Name should not contain space and special characters</clr-control-helper>
+          <clr-control-error [class.invalid]="">
+            Name is invalid can only contain letters or digits. Or is busy</clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class=" clr-col-xl-6 clr-col-lg-6 clr-col-md-6  clr-col-sm-12 clr-col-xs-12 center ">
+        <clr-datalist-container>
+          <label class="inputLable">Municipality</label>
+          <input clrDatalistInput [(ngModel)]="newCompanyDetailsLocation.Municipality" placeholder="No label"
+            name="Option" />
+          <datalist>
+            <option *ngFor="let item of cTypes" [value]="item"></option>
+          </datalist>
+        </clr-datalist-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class=" clr-row ">
+  <div class="clr-col-9 textRight ">
+    <button class="btn btn-warning " type="cancel">Cancel</button>
+    <button class="btn btn-primary " type="submit" (click)="onFormSubmit()">Next</button>
+  </div>
+</div>

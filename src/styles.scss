@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Clarity Component SCSS
+@import "../node_modules/@clr/ui/src/utils/components.clarity";
+@import "~@ng-select/ng-select/themes/ant.design.theme.css";
+//@import "~@ng-select/ng-select/themes/default.theme.css";
+.containerRow {
+    margin: 20px;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.textLeft {
+    text-align: left;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.timeLineCenter {
+    margin-left: 20%;
+    //align-items: center;
+    // justify-content: center;
+}
+
+.clr-input ,
+.clr-input-wrapper > input{
+
+  border-radius:2px ;
+  border: 1px solid hsl(198, 100%, 27%);
+  border-bottom: 1;
+  height: 5rem;
+  color: hsl(198, 100%, 11%);
+  font-size:24px;
+  min-width: 70%;
+
+  width: 100%;
+  min-height: 2rem;
+}
+
+clr-control-container{
+  min-width: 70%;
+  max-width: 100%;
+
+}
+
+.clr-input:focus,
+.clr-input-wrapper:focus  > input:focus   {
+  border: 2px solid hsl(198, 100%, 33%);
+  min-width: 70%;
+  width: 100%;
+  min-height: 2rem;
+}
+clr-control-helper, clr-control-error, .clr-subtext {
+  margin-top: 1.2rem;
+}
+.inputLable{
+  font-size: 20px;
+  margin-bottom:0.2rem ;
+}

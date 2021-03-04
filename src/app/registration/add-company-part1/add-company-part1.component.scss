@@ -1,0 +1,71 @@
+.bold {
+    font-weight: bold;
+    color: #454545;
+}
+textarea{
+  min-width: 70%;
+}
+clr-checkbox-container{
+  padding-bottom: 2em;
+}
+.addPhoneIcons{
+  text-align: left; padding-top: 2.5em;
+}
+.phonesPaddingLeft{
+  padding-left: 1em;
+}
+.phonesListElement{
+  color: #fff;
+  background: hsl(93, 67%, 38%);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+clr-dropdown >button{
+  min-width: 10rem;
+  max-width: 100%;
+
+}
+clr-dropdown-menu >button{
+  min-width: 10rem;
+  max-width: 100%;
+
+}
+/*
+.clr-input ,
+.clr-input-wrapper, clr-control-container > input{
+
+  border-radius:2px ;
+  border: 1px solid hsl(198, 100%, 27%);
+  border-bottom: 1;
+  height: 5rem;
+  color: hsl(198, 100%, 11%);
+  font-size:24px;
+  min-width: 70%;
+
+  width: 100%;
+  min-height: 2rem;
+}
+
+clr-control-container{
+  min-width: 70%;
+  max-width: 100%;
+
+}
+
+.clr-input:focus, clr-control-container,
+.clr-input-wrapper:focus  > input:focus   {
+  border: 2px solid hsl(198, 100%, 33%);
+  min-width: 70%;
+  width: 100%;
+  min-height: 2rem;
+}
+clr-control-helper,clr-control-error
+{
+  margin-top: 1.2rem;
+}
+*/
+.inputLable{
+  font-size: 20px;
+  margin-bottom:0.2rem ;
+}
+

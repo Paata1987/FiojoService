@@ -1,0 +1,61 @@
+<div class="clr-row clr-justify-content-center ">
+    <div class="clr-col-12 headerText ">
+        <h2 class="textCenter"> Add new company WIZARD</h2>
+        <div>
+            <ul class="clr-timeline clr-timeline-horizontal ">
+                <li class="clr-timeline-step timeLineCenter">
+                    <div class="clr-timeline-step-header bold">Step 1</div>
+                    <cds-icon shape="dot-circle" aria-current="true" aria-label="Current"></cds-icon>
+                    <div class="clr-timeline-step-body">
+                        <span class="clr-timeline-step-title">Add Company</span>
+                        <span class="clr-timeline-step-description"> Add main minimal company information</span>
+                    </div>
+                </li>
+                <li class="clr-timeline-step">
+                    <div class="clr-timeline-step-header">Step 2</div>
+                    <cds-icon shape="circle" aria-label="Not started"></cds-icon>
+                    <div class="clr-timeline-step-body">
+                        <span class="clr-timeline-step-title">Details</span>
+                        <span class="clr-timeline-step-description">Add main minimal company information</span>
+                    </div>
+                </li>
+
+                <li class="clr-timeline-step disabled">
+                    <div class="clr-timeline-step-header">Step 3</div>
+                    <cds-icon shape="circle" aria-label="Not started"></cds-icon>
+                    <div class="clr-timeline-step-body">
+                        <span class="clr-timeline-step-title">User</span>
+                        <span class="clr-timeline-step-description">Add worker to complete the registration.</span>
+                    </div>
+                </li>
+                <li class="clr-timeline-step">
+                    <div class="clr-timeline-step-header">Summary</div>
+                    <cds-icon shape="circle" aria-label="Not started"></cds-icon>
+                    <div class="clr-timeline-step-body">
+                        <span class="clr-timeline-step-title">Summary</span>
+                        <span class="clr-timeline-step-description">
+     Summary registration.
+  </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+        <!-- 1 PART -->
+        <ng-container *ngIf=companyInfoSuccessful>
+        <app-add-company-part1 (save)="savePart1($event)"></app-add-company-part1>
+      </ng-container>
+      <!-- 2 PART -->
+      <ng-container *ngIf=companyDitailsSuccessful>
+        <app-add-company-part2  [inputCompanyModelDetails]="registrationWizard.CompanyMain!" [inputCompanyDetailsLocation]="registrationWizard.LocationCompanyMain!" (save)="savePart2($event)"></app-add-company-part2>
+      </ng-container>
+      <!-- 3 PART -->
+      <ng-container *ngIf=newWorckerSuccessful>
+        <app-add-company-part1  (save)="savePart1($event)"></app-add-company-part1>
+      </ng-container>
+
+
+

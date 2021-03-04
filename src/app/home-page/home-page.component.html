@@ -1,0 +1,26 @@
+<clr-alert [clrAlertAppLevel]="true" [clrAlertType]="infoType">
+
+    <span class="alert-text"> {{textInfo}}     
+      </span>
+</clr-alert>
+<ng-container *ngIf="isLoggedOut">
+    <div class="clr-row clr-justify-content-center">
+        <div class="clr-col-md-5 clr-col-lg-5 clr-col-xl-5 ">
+
+
+            <div class="card">
+                <div class="card-body ">
+                    <h2 class="card-title text-center">User Info</h2>
+                    <br/>
+                    <p class="card-text">Name: {{userIdentity.Name.charAt(0).toLocaleUpperCase(userIdentity.CultureCode) + userIdentity.Name.substring(1)}}</p>
+                    <p class="card-text">Roles: {{userIdentity.Roles}}</p>
+                    <p class="card-text">Culture: {{userIdentity.CultureCode}}</p>
+                    <p class="card-text">Language: {{userIdentity.LanguageCode}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</ng-container>
